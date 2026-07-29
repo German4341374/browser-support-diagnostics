@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Options preview</title>
+    <link rel="stylesheet" href="../../src/options/options.css">
+  </head>
+  <body>
+    <main class="options-card">
+      <header><span class="icon" aria-hidden="true">↗</span><div><p>Browser Support Diagnostics</p><h1>Performance settings</h1></div></header>
+      <form id="settings-form">
+        <label for="slow-threshold">Slow resource threshold</label>
+        <div class="input-row"><input id="slow-threshold" name="slowResourceThresholdMs" type="number" min="100" max="60000" step="100" required><span>milliseconds</span></div>
+        <p class="hint">Resources taking at least this long appear in the report. Allowed range: 100–60,000 ms.</p>
+        <button type="submit">Save settings</button><p id="status-message" class="status-message" aria-live="polite"></p>
+      </form>
+      <aside>This setting is stored with Chrome extension preferences. It does not contain page data.</aside>
+    </main>
+    <script type="module" src="options-preview.js"></script>
+  </body>
+</html>
