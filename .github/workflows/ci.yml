@@ -42,7 +42,7 @@ jobs:
         run: npm run check
 
       - name: Upload unpacked extension
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: browser-support-diagnostics-${{ github.sha }}
           path: dist/
