@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible defect without including sensitive page data
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Remove credentials, private URLs, and personal data before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the behavior and the expected result.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open a public test page
+        2. Open the extension popup
+        3. Select Refresh
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Chrome version and operating system, without personal data.
+    validations:
+      required: true

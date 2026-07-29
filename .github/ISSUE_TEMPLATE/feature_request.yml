@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a privacy-preserving improvement
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Support problem
+      description: What support workflow would this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy and permission impact
+      description: Explain whether the feature needs new data or Chrome permissions.
+    validations:
+      required: true

@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, test, privacy, and build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.1
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Audit production and development dependencies
+        run: npm audit --audit-level=high
+
+      - name: Run lint, tests, privacy checks, and build
+        run: npm run check
+
+      - name: Upload unpacked extension
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-support-diagnostics-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14
