@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Browser Support Diagnostics</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img">
+            <path d="M7 5.5h18a2 2 0 0 1 2 2v17a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-17a2 2 0 0 1 2-2Z"/>
+            <path d="M5.5 11h21"/>
+            <circle cx="9" cy="8.4" r="1"/>
+            <circle cx="12.5" cy="8.4" r="1"/>
+            <path d="m10 20 3.2-3.2 2.5 2.5 5-5"/>
+            <path d="M17.5 14.3h3.2v3.2"/>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">Local-only report</p>
+          <h1>Support Diagnostics</h1>
+        </div>
+        <span id="status-badge" class="status-badge status-badge--loading">Collecting</span>
+      </header>
+
+      <section id="message" class="message" aria-live="polite" hidden></section>
+
+      <section id="report" class="report" aria-busy="true">
+        <article class="page-card">
+          <p class="page-card__label">Current page</p>
+          <h2 id="page-title">Collecting page details…</h2>
+          <p id="page-url" class="page-url">—</p>
+          <div class="page-card__meta">
+            <span id="protocol-pill" class="pill">—</span>
+            <span id="mixed-content-pill" class="pill">Mixed content: —</span>
+          </div>
+        </article>
+
+        <section class="metric-grid" aria-label="Page metrics">
+          <article class="metric">
+            <span class="metric__label">Resources</span>
+            <strong id="resource-count">—</strong>
+          </article>
+          <article class="metric">
+            <span class="metric__label">Slow</span>
+            <strong id="slow-count">—</strong>
+          </article>
+          <article class="metric">
+            <span class="metric__label">JS errors</span>
+            <strong id="error-count">—</strong>
+          </article>
+          <article class="metric">
+            <span class="metric__label">Load</span>
+            <strong id="load-duration">—</strong>
+          </article>
+        </section>
+
+        <details class="panel" open>
+          <summary>Environment</summary>
+          <dl class="detail-list">
+            <div><dt>Browser language</dt><dd id="browser-language">—</dd></div>
+            <div><dt>Viewport</dt><dd id="viewport">—</dd></div>
+            <div><dt>Pixel ratio</dt><dd id="pixel-ratio">—</dd></div>
+            <div><dt>Online</dt><dd id="online">—</dd></div>
+            <div><dt>Cookies enabled</dt><dd id="cookies-enabled">—</dd></div>
+            <div><dt>localStorage</dt><dd id="local-storage">—</dd></div>
+            <div><dt>sessionStorage</dt><dd id="session-storage">—</dd></div>
+            <div class="detail-list__wide"><dt>User agent</dt><dd id="user-agent">—</dd></div>
+            <div class="detail-list__wide"><dt>Report timestamp</dt><dd id="timestamp">—</dd></div>
+          </dl>
+        </details>
+
+        <details class="panel">
+          <summary>Navigation timing</summary>
+          <dl id="navigation-details" class="detail-list"></dl>
+        </details>
+
+        <details class="panel">
+          <summary>
+            Slow resources
+            <span id="threshold-label" class="summary-note"></span>
+          </summary>
+          <div id="slow-resources" class="item-list"></div>
+        </details>
+
+        <details class="panel">
+          <summary>Observed JavaScript errors</summary>
+          <p class="panel-note">Only errors observed after the collector was activated are shown.</p>
+          <div id="javascript-errors" class="item-list"></div>
+        </details>
+
+        <aside class="privacy-note">
+          <strong>Privacy by design</strong>
+          <span>No cookie values, storage values, form data, or passwords are read. Nothing is uploaded.</span>
+        </aside>
+      </section>
+
+      <footer class="action-bar">
+        <button id="refresh" class="button button--primary" type="button">Refresh</button>
+        <button id="export-json" class="button" type="button" disabled>Export JSON</button>
+        <button id="export-markdown" class="button" type="button" disabled>Export Markdown</button>
+        <button id="copy-summary" class="button" type="button" disabled>Copy summary</button>
+        <button id="clear-report" class="button button--danger" type="button" disabled>Clear report</button>
+      </footer>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
