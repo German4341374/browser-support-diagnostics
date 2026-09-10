@@ -4,9 +4,12 @@
 [![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-2563eb)](manifest.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0a8f69.svg)](LICENSE)
 
-A compact Chrome extension that helps users and support engineers collect a
-safe diagnostic snapshot of the active web page. Processing happens locally:
-the extension has no analytics, server, remote scripts, or network requests.
+When a page isn't working, this Chrome extension collects a few useful details:
+page timing, slow resources, browser settings, and the errors it can observe.
+You can copy a summary or export a report to share with support.
+
+The report stays on your computer. The extension doesn't read cookie values, form contents,
+or stored browser data, and it doesn't send network requests.
 
 ![Popup showing a local diagnostic report](docs/images/popup.png)
 
